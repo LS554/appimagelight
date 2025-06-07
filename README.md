@@ -1,6 +1,6 @@
 ## About
-This is a modified version of appimagetool for my own personal needs.
-So far, I have patched it to allow buidling an AppImage without requiring a .desktop file or an application icon.
+appimagepatched is a modified version of appimagetool for my own personal needs.
+So far, I have patched appimagetool to allow buidling an AppImage without requiring a .desktop file or an application icon.
 Useful for creating a bare, standalone package.
 
 ### Disclaimer
@@ -8,18 +8,18 @@ This fork was thrown together pretty quickly, so don’t be surprised if you run
 
 ## Usage
 
-`appimagetool` is used to generate an AppImage from an existing `AppDir`. Many community-provided higher-level [tools for deploying applications in AppImage format](https://github.com/AppImageCommunity/awesome-appimage/blob/main/README.md#appimage-developer-tools) use it internally. A precompiled version can be downloaded on [GitHub Releases](../..//releases), but in most cases you will be better off using one of the higher-level tools instead of using `appimagetool` directly.
+`appimagepatched` is used to generate an AppImage from an existing `AppDir`. Many community-provided higher-level [tools for deploying applications in AppImage format](https://github.com/AppImageCommunity/awesome-appimage/blob/main/README.md#appimage-developer-tools) use it internally. A precompiled version can be downloaded on [GitHub Releases](../..//releases), but in most cases you will be better off using one of the higher-level tools instead of using `appimagepatched` directly.
 
 Usage in a nutshell, assuming that you already have an [AppDir](https://github.com/AppImage/AppImageSpec/blob/master/draft.md#appdir) in place:
 
 ```
-ARCH=x86_64 ./appimagetool someinput.AppDir someoutput
+ARCH=x86_64 ./appimagepatched someinput.AppDir someoutput
 ```
 
 Detailed usage:
 ```
 Usage:
-  appimagetool [OPTION...] SOURCE [DESTINATION] - Generate AppImages from existing AppDirs
+  appimagepatched [OPTION...] SOURCE [DESTINATION] - Generate AppImages from existing AppDirs
 
 Help Options:
   -h, --help                  Show help options
@@ -43,11 +43,11 @@ Application Options:
 
 Some of the parameters above can alternatively be specified as environment variables. Also, some additional environment variables are available, too.
 
-- `ARCH`: Needs to be set whenever appimagetool cannot automatically determine the architecture of the binaries inside the AppDir to choose a suitable runtime (e.g., when binaries for multiple architectures or just shell scripts are contained in there).
-- `APPIMAGETOOL_APP_NAME`: If no destination is set by the user, appimagetool automatically generates a suitable output filename, using the root desktop entry's `Name` field. With this environment variable, this value can be set explicitly by the user.
-- `APPIMAGETOOL_FORCE_SIGN`: By default, if signing fails, appimagetool just logs a warning but will not abort immediately. If this environment variable is set, appimagetool exits with a non-zero return code.
+- `ARCH`: Needs to be set whenever appimagepatched cannot automatically determine the architecture of the binaries inside the AppDir to choose a suitable runtime (e.g., when binaries for multiple architectures or just shell scripts are contained in there).
+- `APPIMAGETOOL_APP_NAME`: If no destination is set by the user, appimagepatched automatically generates a suitable output filename, using the root desktop entry's `Name` field. With this environment variable, this value can be set explicitly by the user.
+- `APPIMAGETOOL_FORCE_SIGN`: By default, if signing fails, appimagepatched just logs a warning but will not abort immediately. If this environment variable is set, appimagepatched exits with a non-zero return code.
 - `APPIMAGETOOL_SIGN_PASSPHRASE`: If the `--sign-key` is encrypted and requires a passphrase to be used for signing (and, for some reason, GnuPG cannot be used interactively, e.g., in a CI environment), this environment variable can be used to safely pass the key.
-- `VERSION`: This value will be inserted by appimagetool into the root desktop file and (if the destination parameter is not provided by the user) in the output filename.
+- `VERSION`: This value will be inserted by appimagepatched into the root desktop file and (if the destination parameter is not provided by the user) in the output filename.
 
 ## Building
 
