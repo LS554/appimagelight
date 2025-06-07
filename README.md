@@ -2,6 +2,9 @@
 This is a modified version of appimagetool for my own personal needs.
 So far, I have patched it to allow buidling an AppImage without requiring a .desktop file or an application icon.
 
+### Disclaimer
+This fork was thrown together pretty quickly, so don’t be surprised if you run into some weird bugs.
+
 # appimagetool ![Downloads](https://img.shields.io/github/downloads/AppImage/appimagetool/total.svg) [![irc](https://img.shields.io/badge/IRC-%23AppImage%20on%20libera.chat-blue.svg)](https://web.libera.chat/#AppImage) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZT9CL8M5TJU72)
 
 ## Usage
@@ -49,16 +52,17 @@ Some of the parameters above can alternatively be specified as environment varia
 
 ## Building
 
-To build for various architectures on a local machine (or on GitHub Codespaces) using Docker:
+Build using CMake (in project root)
 
-* For 64 bit Intel, run `ARCH=x86_64 bash ./ci/build-in-docker.sh`
-* For 32 bit Intel, run `ARCH=i686 bash ./ci/build-in-docker.sh`
-
-If you are on an Intel machine and would like to cross-compile for ARM:
-
-* Prepare the Docker system for cross-compiling with `docker run --rm --privileged multiarch/qemu-user-static --reset -p yes`, then run
-* For 64 bit ARM, run `ARCH=aarch64 bash ./ci/build-in-docker.sh`
-* For 32 bit ARM, run `ARCH=armhf bash ./ci/build-in-docker.sh`
+```
+mkdir build && cd build
+```
+```
+cmake ..
+```
+```
+make appimagetool
+```
 
 ## Changelog
 
