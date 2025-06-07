@@ -1,7 +1,6 @@
 ## About
 appimagepatched is a modified version of appimagetool for my own personal needs.
-So far, I have patched appimagetool to allow buidling an AppImage without requiring a .desktop file or an application icon.
-Useful for creating a bare, standalone package.
+It is useful for creating bare, standalone packages as it removes the requirement for .desktop entries and application icons.
 
 ### Disclaimer
 This fork was thrown together pretty quickly, so don’t be surprised if you run into some weird bugs, or it doesn't work how you expect. This is NOT production-ready and I do not recommend using it unless you know exactly what you're doing!
@@ -42,6 +41,7 @@ Application Options:
 ### Environment variables
 
 Some of the parameters above can alternatively be specified as environment variables. Also, some additional environment variables are available, too.
+Please note they have been updated from the original appimagetool environment variables for ease of use.
 
 - `ARCH`: Needs to be set whenever appimagepatched cannot automatically determine the architecture of the binaries inside the AppDir to choose a suitable runtime (e.g., when binaries for multiple architectures or just shell scripts are contained in there).
 - `APP_NAME`: If no destination is set by the user, appimagepatched automatically generates a suitable output filename, using the root desktop entry's `Name` field. With this environment variable, this value can be set explicitly by the user.
