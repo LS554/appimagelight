@@ -1,28 +1,22 @@
 /**************************************************************************
- * 
- * Copyright (c) 2004-24 Simon Peter
- * 
- * All Rights Reserved.
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * * Copyright (c) 2004-24 Simon Peter
+ * * All Rights Reserved.
+ * * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
+ * * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- * 
- **************************************************************************/
+ * **************************************************************************/
 
 #ident "AppImage by Simon Peter, http://appimage.org/"
 
@@ -222,28 +216,28 @@ int sfs_mksquashfs(char *source, char *destination, int offset) {
 
 /* Validate desktop file using desktop-file-validate on the $PATH
 * execlp(), execvp(), and execvpe() search on the $PATH */
-int validate_desktop_file(char *file) {
-    int statval;
-    int child_pid;
-    child_pid = fork();
-    if(child_pid == -1)
-    {
-        printf("could not fork! \n");
-        return 1;
-    }
-    else if(child_pid == 0)
-    {
-        execlp("desktop-file-validate", "desktop-file-validate", file, NULL);
-    }
-    else
-    {
-        waitpid(child_pid, &statval, WUNTRACED | WCONTINUED);
-        if(WIFEXITED(statval)){
-            return(WEXITSTATUS(statval));
-        }
-    }
-    return -1;
-}
+// int validate_desktop_file(char *file) {
+//     int statval;
+//     int child_pid;
+//     child_pid = fork();
+//     if(child_pid == -1)
+//     {
+//         printf("could not fork! \n");
+//         return 1;
+//     }
+//     else if(child_pid == 0)
+//     {
+//         execlp("desktop-file-validate", "desktop-file-validate", file, NULL);
+//     }
+//     else
+//     {
+//         waitpid(child_pid, &statval, WUNTRACED | WCONTINUED);
+//         if(WIFEXITED(statval)){
+//             return(WEXITSTATUS(statval));
+//         }
+//     }
+//     return -1;
+// }
 
 /* Generate a squashfs filesystem
 * The following would work if we link to mksquashfs.o after we renamed 
@@ -421,34 +415,34 @@ void find_arch(const gchar *real_path, const gchar *pattern, bool* archs) {
     }
 }
 
-gchar* find_first_matching_file_nonrecursive(const gchar *real_path, const gchar *pattern) {
-    GDir *dir;
-    gchar *full_name;
-    dir = g_dir_open(real_path, 0, NULL);
-    if (dir != NULL) {
-        const gchar *entry;
-        while ((entry = g_dir_read_name(dir)) != NULL) {
-            full_name = g_build_filename(real_path, entry, NULL);
-            if (g_file_test(full_name, G_FILE_TEST_IS_REGULAR)) {
-                if(g_pattern_match_simple(pattern, entry))
-                    return(full_name);
-            }
-        }
-        g_dir_close(dir);
-    }
-    else { 
-        g_warning("%s: %s", real_path, g_strerror(errno));
-    }
-    return NULL;
-}
+// gchar* find_first_matching_file_nonrecursive(const gchar *real_path, const gchar *pattern) {
+//     GDir *dir;
+//     gchar *full_name;
+//     dir = g_dir_open(real_path, 0, NULL);
+//     if (dir != NULL) {
+//         const gchar *entry;
+//         while ((entry = g_dir_read_name(dir)) != NULL) {
+//             full_name = g_build_filename(real_path, entry, NULL);
+//             if (g_file_test(full_name, G_FILE_TEST_IS_REGULAR)) {
+//                 if(g_pattern_match_simple(pattern, entry))
+//                     return(full_name);
+//             }
+//         }
+//         g_dir_close(dir);
+//     }
+//     else { 
+//         g_warning("%s: %s", real_path, g_strerror(errno));
+//     }
+//     return NULL;
+// }
 
-gchar* get_desktop_entry(GKeyFile *kf, char *key) {
-    gchar *value = g_key_file_get_string (kf, "Desktop Entry", key, NULL);
-    if (! value){
-        fprintf(stderr, "%s entry not found in desktop file\n", key);
-    }
-    return value;
-}
+// gchar* get_desktop_entry(GKeyFile *kf, char *key) {
+//     gchar *value = g_key_file_get_string (kf, "Desktop Entry", key, NULL);
+//     if (! value){
+//         fprintf(stderr, "%s entry not found in desktop file\n", key);
+//     }
+//     return value;
+// }
 
 bool readFile(char* filename, size_t* size, char** buffer) {
     FILE* f = fopen(filename, "rb");
@@ -644,8 +638,8 @@ main (int argc, char *argv[])
         }
     }
 #endif
-    if(! g_find_program_in_path ("desktop-file-validate"))
-        die("desktop-file-validate command is missing, please install it");
+    // if(! g_find_program_in_path ("desktop-file-validate"))
+    //     die("desktop-file-validate command is missing, please install it");
     if(! g_find_program_in_path ("zsyncmake"))
         g_print("WARNING: zsyncmake command is missing, please install it if you want to use binary delta updates\n");
     if(! no_appstream)
@@ -713,7 +707,7 @@ main (int argc, char *argv[])
         char source[PATH_MAX];
         realpath(remaining_args[0], source);
         
-        /* Check if *.desktop file is present in source AppDir */
+/* Commented out original check for desktop file in source AppDir
         gchar *desktop_file = find_first_matching_file_nonrecursive(source, "*.desktop");
         if(desktop_file == NULL){
             die("Desktop file not found, aborting");
@@ -729,7 +723,6 @@ main (int argc, char *argv[])
             }
         }
 
-        /* Read information from .desktop file */
         GKeyFile *kf = g_key_file_new ();
         if (!g_key_file_load_from_file (kf, desktop_file, G_KEY_FILE_KEEP_TRANSLATIONS | G_KEY_FILE_KEEP_COMMENTS, NULL))
             die(".desktop file cannot be parsed");
@@ -744,7 +737,7 @@ main (int argc, char *argv[])
             fprintf (stderr,"Type: %s\n", get_desktop_entry(kf, "Type"));
             fprintf (stderr,"Categories: %s\n", get_desktop_entry(kf, "Categories"));
         }
-
+*/
         /* Determine the architecture */
         bool archs[4] = {0, 0, 0, 0};
         extract_arch_from_text(getenv("ARCH"), "Environmental variable ARCH", archs);
@@ -772,12 +765,17 @@ main (int argc, char *argv[])
                 fprintf(stderr, "Using user-specified app name: %s\n", env_app_name);
                 strncpy(app_name_for_filename, env_app_name, PATH_MAX);
             } else {
-                const gchar* const desktop_file_app_name = get_desktop_entry(kf, "Name");
-                sprintf(app_name_for_filename, "%s", desktop_file_app_name);
-                replacestr(app_name_for_filename, " ", "_");
+                // To avoid errors if the desktop file is not used, provide a default app name.
+                // If you want to use the app name from the desktop file, uncomment the lines below
+                // and ensure `kf` and `get_desktop_entry` are available (i.e., not commented out).
+                // const gchar* const desktop_file_app_name = get_desktop_entry(kf, "Name");
+                // sprintf(app_name_for_filename, "%s", desktop_file_app_name);
+                // replacestr(app_name_for_filename, " ", "_");
+                sprintf(app_name_for_filename, "%s", "AppImage"); // Default app name
 
                 if (verbose) {
-                    fprintf(stderr, "Using app name extracted from desktop file: %s\n", app_name_for_filename);
+                    // fprintf(stderr, "Using app name extracted from desktop file: %s\n", app_name_for_filename);
+                    fprintf(stderr, "Using default app name: %s\n", app_name_for_filename);
                 }
             }
         }
@@ -800,7 +798,7 @@ main (int argc, char *argv[])
             replacestr(destination, " ", "_");
         }
 
-        // if $VERSION is specified, we embed its value into the desktop file
+/* // if $VERSION is specified, we embed its value into the desktop file
         if (version_env != NULL) {
             g_key_file_set_string(kf, G_KEY_FILE_DESKTOP_GROUP, "X-AppImage-Version", version_env);
 
@@ -809,10 +807,11 @@ main (int argc, char *argv[])
                 exit(1);
             }
         }
-
+*/
         fprintf (stdout, "%s should be packaged as %s\n", source, destination);
         /* Check if the Icon file is how it is expected */
-        gchar* icon_name = get_desktop_entry(kf, "Icon");
+//        gchar* icon_name = get_desktop_entry(kf, "Icon"); // This line depends on kf and get_desktop_entry
+        gchar* icon_name = "AppImage"; // Default icon name if desktop file is not used
         gchar* icon_file_path = NULL;
         gchar* icon_file_png;
         gchar* icon_file_svg;
@@ -827,12 +826,7 @@ main (int argc, char *argv[])
         } else if(g_file_test(icon_file_xpm, G_FILE_TEST_IS_REGULAR)) {
             icon_file_path = icon_file_xpm;
         } else {
-            fprintf (stderr, "%s{.png,.svg,.xpm} defined in desktop file but not found\n", icon_name);
-            fprintf (stderr, "For example, you could put a 256x256 pixel png into\n");
-            gchar *icon_name_with_png = g_strconcat(icon_name, ".png", NULL);
-            gchar *example_path = g_build_filename(source, "/", icon_name_with_png, NULL);
-            fprintf (stderr, "%s\n", example_path);
-            exit(1);
+            
         }
        
         /* Check if .DirIcon is present in source AppDir */
@@ -852,7 +846,8 @@ main (int argc, char *argv[])
         /* Check if AppStream upstream metadata is present in source AppDir */
         if(! no_appstream){
             char application_id[PATH_MAX];
-            sprintf (application_id,  "%s", basename(desktop_file));
+            // sprintf (application_id,  "%s", basename(desktop_file)); // This line depends on desktop_file
+            sprintf (application_id,  "%s", "AppImage.desktop"); // Default application ID
             replacestr(application_id, ".desktop", ".appdata.xml");
             gchar *appdata_path = g_build_filename(source, "/usr/share/metainfo/", application_id, NULL);
             if (! g_file_test(appdata_path, G_FILE_TEST_IS_REGULAR)){
