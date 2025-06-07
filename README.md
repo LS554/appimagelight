@@ -4,9 +4,7 @@ So far, I have patched it to allow buidling an AppImage without requiring a .des
 Useful for creating a bare, standalone package.
 
 ### Disclaimer
-This fork was thrown together pretty quickly, so don’t be surprised if you run into some weird bugs, or it doesn't work how you expect. This is NOT production-ready and I do not recommend using it unless you know exactly what you're doing.
-
-# appimagetool ![Downloads](https://img.shields.io/github/downloads/AppImage/appimagetool/total.svg) [![irc](https://img.shields.io/badge/IRC-%23AppImage%20on%20libera.chat-blue.svg)](https://web.libera.chat/#AppImage) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZT9CL8M5TJU72)
+This fork was thrown together pretty quickly, so don’t be surprised if you run into some weird bugs, or it doesn't work how you expect. This is NOT production-ready and I do not recommend using it unless you know exactly what you're doing!
 
 ## Usage
 
