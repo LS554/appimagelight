@@ -1,9 +1,10 @@
 ## About
 This is a modified version of appimagetool for my own personal needs.
 So far, I have patched it to allow buidling an AppImage without requiring a .desktop file or an application icon.
+Useful for creating a bare, standalone package.
 
 ### Disclaimer
-This fork was thrown together pretty quickly, so don’t be surprised if you run into some weird bugs.
+This fork was thrown together pretty quickly, so don’t be surprised if you run into some weird bugs, or it doesn't work how you expect.
 
 # appimagetool ![Downloads](https://img.shields.io/github/downloads/AppImage/appimagetool/total.svg) [![irc](https://img.shields.io/badge/IRC-%23AppImage%20on%20libera.chat-blue.svg)](https://web.libera.chat/#AppImage) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZT9CL8M5TJU72)
 
@@ -52,8 +53,11 @@ Some of the parameters above can alternatively be specified as environment varia
 
 ## Building
 
-Build using CMake (in project root)
-
+### Install prerequisite libraries (debian):
+```
+sudo apt install libglib2.0-dev zlib1g-dev libfuse-dev libcurl4-openssl-dev libgcrypt20-dev libgpgme-dev
+```
+### Build with CMake
 ```
 mkdir build && cd build
 ```
@@ -63,7 +67,5 @@ cmake ..
 ```
 make appimagetool
 ```
-
-## Changelog
-
-* Unlike previous versions of this tool provided in the [AppImageKit](https://github.com/AppImage/AppImageKit/) repository, this version downloads the latest AppImage runtime (which will become part of the AppImage) from https://github.com/AppImage/type2-runtime/releases. If you do not like this (or if your build system does not have Internet access), you can supply a locally downloaded AppImage runtime using the `--runtime-file` parameter instead.
+## Credits
+Credit and thank you to original project by AppImage team
