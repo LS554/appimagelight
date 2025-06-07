@@ -1169,9 +1169,8 @@ main (int argc, char *argv[])
         }
 
         fprintf(stderr, "Success\n\n");
-        fprintf(stderr, "Please consider submitting your AppImage to AppImageHub, the crowd-sourced\n");
-        fprintf(stderr, "central directory of available AppImages, by opening a pull request\n");
-        fprintf(stderr, "at https://github.com/AppImage/appimage.github.io\n");
+        fprintf(stderr, "Thank you for using appimagepatched.\n");
+        fprintf(stderr, "Credits and thanks to the AppImage team for the original project!\n");
 
         return 0;
     } else if (g_file_test(remaining_args[0], G_FILE_TEST_IS_REGULAR)) {
