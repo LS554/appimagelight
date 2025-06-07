@@ -1,13 +1,13 @@
 ## About
 appimagepatched is a modified version of appimagetool for my own personal needs.
-It is useful for creating bare, standalone packages as it removes the requirement for .desktop entries and application icons.
+It is useful for creating bare packages as it removes the requirement for .desktop entries and application icons.
 
 ### Disclaimer
 This fork was thrown together pretty quickly, so don’t be surprised if you run into some weird bugs, or it doesn't work how you expect. This is NOT production-ready and I do not recommend using it unless you know exactly what you're doing!
 
 ## Usage
 
-`appimagepatched` is used to generate an AppImage from an existing `AppDir`. Many community-provided higher-level [tools for deploying applications in AppImage format](https://github.com/AppImageCommunity/awesome-appimage/blob/main/README.md#appimage-developer-tools) use it internally. A precompiled version can be downloaded on [GitHub Releases](../..//releases), but in most cases you will be better off using one of the higher-level tools instead of using `appimagepatched` directly.
+`appimagepatched` is used to generate an AppImage from an existing `AppDir`.
 
 Usage in a nutshell, assuming that you already have an [AppDir](https://github.com/AppImage/AppImageSpec/blob/master/draft.md#appdir) in place:
 
