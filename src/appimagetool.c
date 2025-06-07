@@ -85,7 +85,7 @@ static void die(const char *msg) {
     exit(1);
 }
 
-/* Generate a squashfs filesystem using mksquashfs on the $PATH 
+/* Generate a squashfs filesystem using mksquashfs on the $PATH
 * execlp(), execvp(), and execvpe() search on the $PATH */
 int sfs_mksquashfs(char *source, char *destination, int offset) {
     pid_t pid = fork();
@@ -240,7 +240,7 @@ int sfs_mksquashfs(char *source, char *destination, int offset) {
 // }
 
 /* Generate a squashfs filesystem
-* The following would work if we link to mksquashfs.o after we renamed 
+* The following would work if we link to mksquashfs.o after we renamed
 * main() to mksquashfs_main() in mksquashfs.c but we don't want to actually do
 * this because squashfs-tools is not under a permissive license
 * i *nt sfs_mksquashfs(char *source, char *destination) {
@@ -430,7 +430,7 @@ void find_arch(const gchar *real_path, const gchar *pattern, bool* archs) {
 //         }
 //         g_dir_close(dir);
 //     }
-//     else { 
+//     else {
 //         g_warning("%s: %s", real_path, g_strerror(errno));
 //     }
 //     return NULL;
@@ -460,7 +460,7 @@ bool readFile(char* filename, size_t* size, char** buffer) {
     fread(indata, fsize, 1, f);
     fclose(f);
     *size = (int)fsize;
-    *buffer = indata; 
+    *buffer = indata;
     return TRUE;
 }
 
@@ -523,7 +523,7 @@ int
 main (int argc, char *argv[])
 {
 
-    /* Parse Travis CI environment variables. 
+    /* Parse Travis CI environment variables.
      * https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
      * TRAVIS_COMMIT: The commit that the current build is testing.
      * TRAVIS_REPO_SLUG: The slug (in form: owner_name/repo_name) of the repository currently being built.
@@ -544,7 +544,7 @@ main (int argc, char *argv[])
      * GITHUB_REPOSITORY_OWNER: The repository owner's name. For example, octocat.
      */
 
-    /* https://github.com/probonopd/uploadtool */
+    /* https://github.com/probono/uploadtool */
     char* github_token;
     github_token = getenv("GITHUB_TOKEN");
 
@@ -826,22 +826,32 @@ main (int argc, char *argv[])
         } else if(g_file_test(icon_file_xpm, G_FILE_TEST_IS_REGULAR)) {
             icon_file_path = icon_file_xpm;
         } else {
-            
+            // No warning message when icon is not found.
         }
        
-        /* Check if .DirIcon is present in source AppDir */
-        gchar *diricon_path = g_build_filename(source, ".DirIcon", NULL);
-        
-        if (! g_file_test(diricon_path, G_FILE_TEST_EXISTS)){
-            fprintf (stderr, "Deleting pre-existing .DirIcon\n");
-            g_unlink(diricon_path);
-        }
-        if (! g_file_test(diricon_path, G_FILE_TEST_IS_REGULAR)){
-            fprintf (stderr, "Creating .DirIcon symlink based on information from desktop file\n");
-            int res = symlink(basename(icon_file_path), diricon_path);
-            if(res)
-                die("Could not symlink .DirIcon");
-        }
+        /* Removed .DirIcon check and symlink creation */
+        // gchar *diricon_path = g_build_filename(source, ".DirIcon", NULL);
+        // if (! g_file_test(diricon_path, G_FILE_TEST_EXISTS)){
+        //     if (verbose) { // Only print if verbose
+        //         fprintf (stderr, "Deleting pre-existing .DirIcon\n");
+        //     }
+        //     g_unlink(diricon_path);
+        // }
+        // if (! g_file_test(diricon_path, G_FILE_TEST_IS_REGULAR)){
+        //     if (icon_file_path != NULL) {
+        //         if (verbose) { // Only print if verbose
+        //             fprintf (stderr, "Creating .DirIcon symlink\n");
+        //         }
+        //         int res = symlink(basename(icon_file_path), diricon_path);
+        //         if(res) {
+        //             if (verbose) { // Only print if verbose
+        //                 fprintf(stderr, "WARNING: Could not symlink .DirIcon: %s\n", g_strerror(errno));
+        //             }
+        //         }
+        //     } else {
+        //         // No message for skipping .DirIcon symlink creation if no icon is found.
+        //     }
+        // }
         
         /* Check if AppStream upstream metadata is present in source AppDir */
         if(! no_appstream){
@@ -974,7 +984,7 @@ main (int argc, char *argv[])
                     if(zsyncmake_path){
                         char buf[1024];
                         gchar **parts = g_strsplit (travis_repo_slug, "/", 2);
-                        /* https://github.com/AppImage/AppImageSpec/blob/master/draft.md#github-releases 
+                        /* https://github.com/AppImage/AppImageSpec/blob/master/draft.md#github-releases
                          * gh-releases-zsync|probono|AppImages|latest|Subsurface*-x86_64.AppImage.zsync */
                         gchar *channel = "continuous";
                             if(travis_tag != NULL){
