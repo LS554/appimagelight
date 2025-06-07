@@ -67,5 +67,6 @@ cmake ..
 ```
 make appimagetool
 ```
+*Will likely output to src/
 ## Credits
 Credit and thank you to original project by AppImage team
