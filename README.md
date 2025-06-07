@@ -15,7 +15,7 @@ This fork was thrown together pretty quickly, so don’t be surprised if you run
 Usage in a nutshell, assuming that you already have an [AppDir](https://github.com/AppImage/AppImageSpec/blob/master/draft.md#appdir) in place:
 
 ```
-ARCH=x86_64 ./appimagetool-x86_64.AppImage some.AppDir
+ARCH=x86_64 ./appimagetool some.AppDir
 ```
 
 Detailed usage:
