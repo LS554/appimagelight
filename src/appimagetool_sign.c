@@ -16,7 +16,7 @@ static const char signature_elf_section[] = ".sha256_sig";
 static const char key_elf_section[] = ".sig_key";
 
 char* get_passphrase_from_environment() {
-    return getenv("APPIMAGETOOL_SIGN_PASSPHRASE");
+    return getenv("SIGN_PASSPHRASE");
 }
 
 gpgme_error_t gpgme_passphrase_callback(void* hook, const char* uid_hint, const char* passphrase_info, int prev_was_valid, int fd) {

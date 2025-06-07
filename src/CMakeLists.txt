@@ -1,4 +1,4 @@
-add_executable(appimagetool
+add_executable(appimagepatched
     appimagetool.c
     appimagetool_sign.c
     appimagetool_fetch_runtime.cpp
@@ -8,9 +8,7 @@ add_executable(appimagetool
     md5.c
 )
 
-# trick: list libraries on which imported static ones depend on in the PUBLIC section
-# CMake then adds them after the PRIVATE ones in the linker command
-target_link_libraries(appimagetool
+target_link_libraries(appimagepatched
     ${CMAKE_DL_LIBS}
     PkgConfig::libglib
     PkgConfig::libgio
@@ -19,21 +17,21 @@ target_link_libraries(appimagetool
     PkgConfig::libcurl
 )
 
-target_compile_definitions(appimagetool
+target_compile_definitions(appimagepatched
     PRIVATE -D_FILE_OFFSET_BITS=64
     PRIVATE -DGIT_VERSION="${GIT_VERSION}"
     PRIVATE -DBUILD_NUMBER="${BUILD_NUMBER}"
     PRIVATE -DBUILD_DATE="${DATE}"
 )
 
-target_include_directories(appimagetool
+target_include_directories(appimagepatched
     PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/>
            $<BUILD_INTERFACE:${ARGP_INCLUDE_DIR}>
     INTERFACE $<INSTALL_INTERFACE:include/>
 )
 
 install(
-    TARGETS appimagetool
+    TARGETS appimagepatched
     RUNTIME DESTINATION bin
 )
 

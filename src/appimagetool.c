@@ -760,7 +760,7 @@ main (int argc, char *argv[])
 
         char app_name_for_filename[PATH_MAX];
         {
-            const char* const env_app_name = getenv("APPIMAGETOOL_APP_NAME");
+            const char* const env_app_name = getenv("APP_NAME");
             if (env_app_name != NULL) {
                 fprintf(stderr, "Using user-specified app name: %s\n", env_app_name);
                 strncpy(app_name_for_filename, env_app_name, PATH_MAX);
