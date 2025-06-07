@@ -1,3 +1,5 @@
+# Tool to create basic AppDir structure
+
 import os
 import strformat
 
