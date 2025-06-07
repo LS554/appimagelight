@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(appimagetool)
+project(appimagepatched)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 20)
