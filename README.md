@@ -50,9 +50,14 @@ Please note they have been updated from the original appimagetool environment va
 
 ## Building
 
-### Install prerequisite libraries (debian):
+### Install prerequisite libraries:
+#### Debian:
 ```
 sudo apt install libglib2.0-dev zlib1g-dev libfuse-dev libcurl4-openssl-dev libgcrypt20-dev libgpgme-dev
+```
+#### Fedora:
+```
+sudo dnf install glib2-devel zlib-devel fuse-devel libcurl-devel libgcrypt-devel gpgme-devel
 ```
 ### Build with CMake
 ```
