@@ -53,11 +53,11 @@ Please note they have been updated from the original appimagetool environment va
 ### Install prerequisite libraries:
 #### Debian:
 ```
-sudo apt install libglib2.0-dev zlib1g-dev libfuse-dev libcurl4-openssl-dev libgcrypt20-dev libgpgme-dev
+sudo apt install libglib2.0-dev zlib1g-dev libfuse-dev libcurl4-openssl-dev libgcrypt20-dev libgpgme-dev zsync
 ```
 #### Fedora:
 ```
-sudo dnf install glib2-devel zlib-devel fuse-devel libcurl-devel libgcrypt-devel gpgme-devel
+sudo dnf install glib2-devel zlib-devel fuse-devel libcurl-devel libgcrypt-devel gpgme-devel zsync
 ```
 ### Build with CMake
 ```
@@ -67,8 +67,8 @@ mkdir build && cd build
 cmake ..
 ```
 ```
-make appimagetool
+make appimagepatched
 ```
-*Will likely output to src/
+*Will output to PROJECTROOT/build/src/appimagepatched
 ## Credits
 Credit and thank you to original project by AppImage team
