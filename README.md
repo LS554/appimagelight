@@ -2,6 +2,8 @@
 appimagepatched is a modified version of appimagetool for my own personal needs.
 It is useful for creating bare packages as it removes the requirement for .desktop entries and application icons.
 
+It is especially useful if used as a wrapper. For example, for a JVM jar.
+
 ### Disclaimer
 This fork was thrown together pretty quickly, so don’t be surprised if you run into some weird bugs, or it doesn't work how you expect. This is NOT production-ready and I do not recommend using it unless you know exactly what you're doing!
 
