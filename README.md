@@ -63,7 +63,7 @@ sudo dnf install glib2-devel zlib-devel fuse-devel libcurl-devel libgcrypt-devel
 ```
 #### SUSE:
 ```
-sudo zypper install glib2-devel zlib-devel fuse-devel libcurl-devel libgcrypt-devel gpgme-devel zsync mksquashfs
+sudo zypper install glib2-devel zlib-devel fuse-devel libcurl-devel libgcrypt-devel gpgme-devel zsync squashfs appstream
 ```
 ### Build with CMake
 ```
