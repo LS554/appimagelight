@@ -26,6 +26,7 @@ exec "$APPDIR/usr/bin/test" "$@""""
         createDir(usr)
         createDir(bin)
         writeFile(AppRun, AppRunContents)
+        setFilePermissions(AppRun, {fpUserRead, fpUserWrite, fpUserExec, fpGroupRead, fpGroupExec, fpOthersRead, fpOthersExec})
     else:
         echo &"Error, directory {dir} exists. Quitting." 
         quit(1)
