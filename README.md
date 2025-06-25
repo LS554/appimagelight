@@ -55,11 +55,15 @@ Please note they have been updated from the original appimagetool environment va
 ### Install prerequisite libraries:
 #### Debian:
 ```
-sudo apt install libglib2.0-dev zlib1g-dev libfuse-dev libcurl4-openssl-dev libgcrypt20-dev libgpgme-dev zsync
+sudo apt install libglib2.0-dev zlib1g-dev libfuse-dev libcurl4-openssl-dev libgcrypt20-dev libgpgme-dev zsync mksquashfs
 ```
 #### Fedora:
 ```
-sudo dnf install glib2-devel zlib-devel fuse-devel libcurl-devel libgcrypt-devel gpgme-devel zsync
+sudo dnf install glib2-devel zlib-devel fuse-devel libcurl-devel libgcrypt-devel gpgme-devel zsync mksquashfs
+```
+#### SUSE:
+```
+sudo zypper install glib2-devel zlib-devel fuse-devel libcurl-devel libgcrypt-devel gpgme-devel zsync mksquashfs
 ```
 ### Build with CMake
 ```
