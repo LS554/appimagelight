@@ -59,7 +59,7 @@ sudo apt install libglib2.0-dev zlib1g-dev libfuse-dev libcurl4-openssl-dev libg
 ```
 #### Fedora:
 ```
-sudo dnf install glib2-devel zlib-devel fuse-devel libcurl-devel libgcrypt-devel gpgme-devel zsync mksquashfs
+sudo dnf install glib2-devel zlib-devel fuse-devel libcurl-devel libgcrypt-devel gpgme-devel zsync squashfs-tools
 ```
 #### SUSE:
 ```
