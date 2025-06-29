@@ -55,7 +55,7 @@ Please note they have been updated from the original appimagetool environment va
 ### Install prerequisite libraries:
 #### Debian:
 ```
-sudo apt install libglib2.0-dev zlib1g-dev libfuse-dev libcurl4-openssl-dev libgcrypt20-dev libgpgme-dev zsync mksquashfs
+sudo apt install libglib2.0-dev zlib1g-dev libfuse-dev libcurl4-openssl-dev libgcrypt20-dev libgpgme-dev zsync squashfs-tools
 ```
 #### Fedora:
 ```
