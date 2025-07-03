@@ -8,3 +8,7 @@ rm -rf src/
 rm -rf CMakeFiles
 rm cmake_install.cmake 
 rm Makefile
+cd ..
+cd dirtool
+make dirtool
+mv dirtool ../build
