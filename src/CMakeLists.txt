@@ -1,4 +1,4 @@
-add_executable(appimagepatched
+add_executable(appimagelight
     appimagetool.c
     appimagetool_sign.c
     appimagetool_fetch_runtime.cpp
@@ -8,7 +8,7 @@ add_executable(appimagepatched
     md5.c
 )
 
-target_link_libraries(appimagepatched
+target_link_libraries(appimagelight
     ${CMAKE_DL_LIBS}
     PkgConfig::libglib
     PkgConfig::libgio
@@ -17,21 +17,21 @@ target_link_libraries(appimagepatched
     PkgConfig::libcurl
 )
 
-target_compile_definitions(appimagepatched
+target_compile_definitions(appimagelight
     PRIVATE -D_FILE_OFFSET_BITS=64
     PRIVATE -DGIT_VERSION="${GIT_VERSION}"
     PRIVATE -DBUILD_NUMBER="${BUILD_NUMBER}"
     PRIVATE -DBUILD_DATE="${DATE}"
 )
 
-target_include_directories(appimagepatched
+target_include_directories(appimagelight
     PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/>
            $<BUILD_INTERFACE:${ARGP_INCLUDE_DIR}>
     INTERFACE $<INSTALL_INTERFACE:include/>
 )
 
 install(
-    TARGETS appimagepatched
+    TARGETS appimagelight
     RUNTIME DESTINATION bin
 )
 

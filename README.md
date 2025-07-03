@@ -1,5 +1,5 @@
 ## About
-appimagepatched is a modified version of appimagetool for my own personal needs.
+appimagelight is a modified version of appimagetool for my own personal needs.
 It is useful for creating bare packages as it removes the requirement for .desktop entries and application icons.
 
 It is especially useful if used as a wrapper. For example, for a JVM jar and runner.
@@ -9,18 +9,18 @@ This fork was thrown together pretty quickly, so don’t be surprised if you run
 
 ## Usage
 
-`appimagepatched` is used to generate an AppImage from an existing `AppDir`.
+`appimagelight` is used to generate an AppImage from an existing `AppDir`.
 
 Usage in a nutshell, assuming that you already have an [AppDir](https://github.com/AppImage/AppImageSpec/blob/master/draft.md#appdir) in place:
 
 ```
-ARCH=x86_64 ./appimagepatched someinput.AppDir someoutput
+ARCH=x86_64 ./appimagelight someinput.AppDir someoutput
 ```
 
 Detailed usage:
 ```
 Usage:
-  appimagepatched [OPTION...] SOURCE [DESTINATION] - Generate AppImages from existing AppDirs
+  appimagelight [OPTION...] SOURCE [DESTINATION] - Generate AppImages from existing AppDirs
 
 Help Options:
   -h, --help                  Show help options
@@ -45,10 +45,10 @@ Application Options:
 Some of the parameters above can alternatively be specified as environment variables. Also, some additional environment variables are available, too.
 Please note they have been updated from the original appimagetool environment variables for ease of use.
 
-- `ARCH`: Needs to be set whenever appimagepatched cannot automatically determine the architecture of the binaries inside the AppDir to choose a suitable runtime (e.g., when binaries for multiple architectures or just shell scripts are contained in there).
-- `APP_NAME`: If no destination is set by the user, appimagepatched automatically generates a suitable output filename, using the root desktop entry's `Name` field. With this environment variable, this value can be set explicitly by the user.
+- `ARCH`: Needs to be set whenever appimagelight cannot automatically determine the architecture of the binaries inside the AppDir to choose a suitable runtime (e.g., when binaries for multiple architectures or just shell scripts are contained in there).
+- `APP_NAME`: If no destination is set by the user, appimagelight automatically generates a suitable output filename, using the root desktop entry's `Name` field. With this environment variable, this value can be set explicitly by the user.
 - `SIGN_PASSPHRASE`: If the `--sign-key` is encrypted and requires a passphrase to be used for signing (and, for some reason, GnuPG cannot be used interactively, e.g., in a CI environment), this environment variable can be used to safely pass the key.
-- `VERSION`: This value will be inserted by appimagepatched into the root desktop file and (if the destination parameter is not provided by the user) in the output filename.
+- `VERSION`: This value will be inserted by appimagelight into the root desktop file and (if the destination parameter is not provided by the user) in the output filename.
 
 ## Building
 
@@ -73,8 +73,8 @@ mkdir build && cd build
 cmake ..
 ```
 ```
-make appimagepatched
+make appimagelight
 ```
-*Will output to PROJECTROOT/build/src/appimagepatched
+*Will output to PROJECTROOT/build/src/appimagelight
 ## Credits
 Credit and thank you to original project by AppImage team

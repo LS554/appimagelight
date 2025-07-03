@@ -1169,7 +1169,7 @@ main (int argc, char *argv[])
         }
 
         fprintf(stderr, "Success\n\n");
-        fprintf(stderr, "Thank you for using appimagepatched.\n");
+        fprintf(stderr, "Thank you for using appimagelight.\n");
         fprintf(stderr, "Credits and thanks to the AppImage team for the original project!\n");
 
         return 0;
