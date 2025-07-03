@@ -21,7 +21,8 @@ export APPDIR
 
 # Finally, launch your 'test' application.
 # The "$@" passes any arguments given to the AppImage directly to 'test'.
-exec "$APPDIR/usr/bin/test" "$@""""
+exec "$APPDIR/usr/bin/test" "$@"
+#exec ruby "$APPDIR/script.rb" "$@""""
         createDir(folder)
         createDir(usr)
         createDir(bin)
