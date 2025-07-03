@@ -65,7 +65,11 @@ sudo dnf install glib2-devel zlib-devel fuse-devel libcurl-devel libgcrypt-devel
 ```
 sudo zypper install glib2-devel zlib-devel fuse-devel libcurl-devel libgcrypt-devel gpgme-devel zsync squashfs appstream
 ```
-### Build with CMake
+### Build using script
+```
+sh build.sh
+```
+### Build manually
 ```
 mkdir build && cd build
 ```
